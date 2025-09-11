@@ -37,6 +37,7 @@ export default function App() {
   }
   function closeEightBallAnswer(){
     setModalIsVisible(false);
+    setUserQuestion("");
   }
 
   let result = (
