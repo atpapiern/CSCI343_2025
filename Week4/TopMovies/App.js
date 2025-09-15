@@ -119,6 +119,6 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     flex: 8,
-    width: "80%",
+    width: "90%",
   },
 });
