@@ -45,7 +45,7 @@ export default function OrderReviewScreen(props) {
           </View>
           <View style={styles.servicesContainer}>
             <Text style={styles.services}>Repair Time:</Text>
-            <Text style={styles.subServices}>{props.size}</Text>
+            <Text style={styles.subServices}>{props.repairTime}</Text>
             <Text style={styles.services}>Services:</Text>
             {props.services.map((item) => {
               if (item.value) {
