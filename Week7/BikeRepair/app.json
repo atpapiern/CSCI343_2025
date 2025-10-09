@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "BikeRepair",
+    "slug": "BikeRepair",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/bike.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/bike.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/bike.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/images/bike.png"
+    }
+  }
+}
