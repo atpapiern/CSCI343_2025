@@ -31,7 +31,7 @@ export default function HomeScreen() {
   }
 
   function hideCheckInPicker() {
-    setShowCheckIn(true);
+    setShowCheckIn(false);
   }
 
   function onChangeCheckIn(event, selectedDate) {
@@ -51,7 +51,7 @@ export default function HomeScreen() {
   }
 
   function hideCheckOutPicker() {
-    setShowCheckOut(true);
+    setShowCheckOut(false);
   }
 
   function onChangeCheckOut(event, selectedDate) {
