@@ -3,7 +3,7 @@
     "name": "CampgroundReservation",
     "slug": "CampgroundReservation",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "auto",
     "icon": "./assets/images/camping-splash.jpg",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
