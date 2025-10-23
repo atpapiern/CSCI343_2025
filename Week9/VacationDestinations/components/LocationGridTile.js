@@ -2,7 +2,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import Colors from "../constants/colors.js";
 
-export default function StateGridTile(props) {
+export default function LocationGridTile(props) {
   return (
     <View style={styles.gridItem}>
       <Pressable
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     title:{
         textAlign:"center", 
         fontSize:30, 
-        fontFamily:"Camp",
+        fontFamily:"Vacation",
     }
 
 })

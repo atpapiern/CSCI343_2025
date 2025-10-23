@@ -7,7 +7,7 @@ import * as Font from "expo-font";
 
 import Colors from "./constants/colors.js";
 import HomeScreen from "./screens/HomeScreen";
-import CampgroundsOverviewScreen from "./screens/CampgroundsOverviewScreen";
+import DestinationsOverviewScreen from "./screens/DestinationsOverviewScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -24,7 +24,7 @@ SplashScreen.setOptions({
 export default function App() {
   //Fonts, SplashScreen, and Loading
   const [loaded] = Font.useFonts({
-    Camp: require("./assets/fonts/Mountain.ttf"),
+    Vacation: require("./assets/fonts/TheHotelio.ttf"),
   });
 
   useEffect(() => {
@@ -49,11 +49,11 @@ export default function App() {
           <Stack.Screen
             name="HomeScreen"
             component={HomeScreen}
-            options={{ title: "Campground Locations" }}
+            options={{ title: "Vacation Locations" }}
           />
           <Stack.Screen
-            name="CampgroundsOverview"
-            component={CampgroundsOverviewScreen}
+            name="DestinationsOverview"
+            component={DestinationsOverviewScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   screenOptions: {
     headerStyle: { backgroundColor: Colors.primary500 },
     headerTintColor: Colors.primary300,
-    headerTitleStyle: { fontFamily: "Camp", fontSize: 40 },
+    headerTitleStyle: { fontFamily: "Vacation", fontSize: 40 },
     contentStyle: { backgroundColor: Colors.primary800 },
   },
 });
