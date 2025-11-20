@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "ChantBaseballHub",
+    "slug": "ChantBaseballHub",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/chanticleer.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/chanticleer.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/chanticleer.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/images/chanticleer.png"
+    }
+  }
+}
