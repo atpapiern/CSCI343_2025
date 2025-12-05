@@ -24,6 +24,9 @@
     },
     "web": {
       "favicon": "./assets/images/newsSplash.png"
-    }
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
