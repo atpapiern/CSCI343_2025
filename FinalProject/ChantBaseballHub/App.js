@@ -7,25 +7,20 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-  Entypo,
-  MaterialIcons,
-  FontAwesome5,
-  Fontisto,
-  Ionicons,
-} from "@expo/vector-icons";
+import { Entypo, FontAwesome6, Ionicons } from "@expo/vector-icons";
 
 import FavoritesScreen from "./screens/FavoritesScreen";
 import Colors from "./constants/colors";
 import HomePageScreen from "./screens/HomePageScreen";
-import RosterScreen from "./screens/RosterScreen";
+import FielderScreen from "./screens/FielderScreen";
+import FielderDetailScreen from "./screens/FielderDetailsScreen";
+import PitcherScreen from "./screens/PitcherScreen";
+import PitcherDetailScreen from "./screens/PitcherDetailsScreen";
 import ScheduleScreen from "./screens/ScheduleScreen";
-import NewsScreen from "./screens/NewsScreen";
+import ScheduleDetailScreen from "./screens/ScheduleDetailScreen";
+import FavoritesContextProvider from "./store/context/favorites-context";
 
-// Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
-
-//Set the animation options. This is optional
 SplashScreen.setOptions({
   duration: 3000,
   fade: true,
@@ -104,20 +99,31 @@ function TabsNavigator() {
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="baseball-outline" color={color} size={size} />
+            <FontAwesome6 name="house-chimney" color={color} size={size} />
           ),
           tabBarLabel: "Home",
         }}
       />
       <Tabs.Screen
-        name="Roster"
-        component={RosterScreen}
+        name="Fielder"
+        component={FielderScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person" color={color} size={size} />
+            <FontAwesome6 name="baseball-bat-ball" color={color} size={size} />
           ),
-          tabBarLabel: "Roster",
+          tabBarLabel: "Fielders",
+        }}
+      />
+      <Tabs.Screen
+        name="Pitcher"
+        component={PitcherScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome6 name="baseball" color={color} size={size} />
+          ),
+          tabBarLabel: "Pitchers",
         }}
       />
       <Tabs.Screen
@@ -129,17 +135,6 @@ function TabsNavigator() {
             <Entypo name="calendar" color={color} size={size} />
           ),
           tabBarLabel: "Schedule",
-        }}
-      />
-      <Tabs.Screen
-        name="News"
-        component={NewsScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <Entypo name="news" color={color} size={size} />
-          ),
-          tabBarLabel: "News",
         }}
       />
     </Tabs.Navigator>
@@ -168,23 +163,33 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="DrawerScreen"
-          screenOptions={{
-            headerTintColor: Colors.primary300,
-            headerStyle: { backgroundColor: Colors.primary500 },
-            contentStyle: { backgroundColor: "black" },
-          }}
-        >
-          <Stack.Screen
-            name="DrawerScreen"
-            component={DrawerNavigator}
-            options={{ headerShown: false }}
-          />
-          
-        </Stack.Navigator>
-      </NavigationContainer>
+      <FavoritesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="DrawerScreen"
+            screenOptions={{
+              headerTintColor: Colors.primary300,
+              headerStyle: { backgroundColor: Colors.primary500 },
+              contentStyle: { backgroundColor: "black" },
+            }}
+          >
+            <Stack.Screen
+              name="DrawerScreen"
+              component={DrawerNavigator}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name="FielderInfo" component={FielderDetailScreen} />
+            <Stack.Screen name="PitcherInfo" component={PitcherDetailScreen} />
+            <Stack.Screen
+              name="GameInfo"
+              component={ScheduleDetailScreen}
+              options={{
+                title: "",
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </FavoritesContextProvider>
     </>
   );
 }
