@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, Switch, StyleSheet, Text } from "react-native";
 import Game from "../components/Game/Game";
 import { GAMES } from "../data/schedule_data";
-
+import Colors from "../constants/colors.js";
 export default function ScheduleScreen() {
   const [showHomeOnly, setShowHomeOnly] = useState(false);
 
@@ -18,13 +18,14 @@ export default function ScheduleScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.toggleContainer}>
-        <Text style={styles.toggleText}>{"Toggle Home Games"}</Text>
+        <Text style={styles.toggleText}>{"All"}</Text>
         <Switch
           value={showHomeOnly}
           onValueChange={setShowHomeOnly}
-          trackColor={{ false: "#cccccc", true: "#a27752" }}
-          thumbColor={showHomeOnly ? "#006f71" : "#006f71"}
+          trackColor={{ false: "#cccccc", true: Colors.accent200 }}
+          thumbColor={showHomeOnly ? Colors.primary800 : Colors.primary800}
         />
+        <Text style={styles.toggleText}>{"Home"}</Text>
       </View>
       <Game items={displayedGames} />
     </View>

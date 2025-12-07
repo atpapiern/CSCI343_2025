@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import { PLAYERS } from "../data/player_data";
 import { useContext, useLayoutEffect, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import Colors from "../constants/colors";
 import FavoriteButton from "../components/FavoriteButton";
 import { FavoritesContext } from "../store/context/favorites-context";
@@ -40,6 +41,11 @@ export default function PitcherDetailScreen(props) {
     <View style={styles.rootContainer}>
       <View style={styles.imageContainer}>
         <Image style={styles.image} source={{ uri: selectedPlayer.imageUrl }} />
+        <LinearGradient
+          colors={["transparent", Colors.primary500]}
+          style={styles.gradient}
+          locations={[0.5, 1]}
+        />
       </View>
 
       <View style={styles.textContainer}>
@@ -70,14 +76,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   imageContainer: {
-    marginVertical: 10,
     height: 400,
-    overflow: "hidden",
+    position: "relative",
   },
   image: {
+    width: "100%",
     height: 600,
-    borderRadius: 7,
     resizeMode: "cover",
+  },
+  gradient: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: 150,
   },
   textContainer: {
     borderRadius: 7,

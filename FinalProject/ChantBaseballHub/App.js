@@ -142,7 +142,6 @@ function TabsNavigator() {
 }
 
 export default function App() {
-  //Fonts, SplashScreen, and Loading
   const [loaded] = Font.useFonts({
     type: require("./assets/fonts/CrimsonText-Regular.ttf"),
     typeBold: require("./assets/fonts/CrimsonText-Bold.ttf"),
@@ -155,7 +154,6 @@ export default function App() {
     }
   }, [loaded]);
 
-  //Rendering Screen
   if (!loaded) {
     return null;
   }

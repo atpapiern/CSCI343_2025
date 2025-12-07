@@ -3,7 +3,7 @@
     "name": "ChantBaseballHub",
     "slug": "ChantBaseballHub",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/images/chanticleer.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
