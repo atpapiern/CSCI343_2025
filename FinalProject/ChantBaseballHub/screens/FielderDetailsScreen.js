@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Alert, Pressable } from "react-native";
 import { PLAYERS } from "../data/player_data";
 import { useContext, useLayoutEffect, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
@@ -21,6 +21,14 @@ export default function FielderDetailScreen(props) {
     } else {
       favoritePlayersCtx.addFavorite(playerId);
     }
+  }
+
+  function showDefinition() {
+    Alert.alert(
+      "BA = Batting Average",
+      "Batting Average is a calculation that reflects average number of hits per at bat.",
+      [{ text: "OK" }]
+    );
   }
 
   useLayoutEffect(() => {
@@ -60,13 +68,15 @@ export default function FielderDetailScreen(props) {
           <FontAwesome name="music" color={"black"} size={18} />
           <Text style={styles.songInfo}> {selectedPlayer.walkUpSongName}</Text>
         </Text>
-        <View style={styles.infoContainer}>
-          <Text style={styles.info}>
-            {selectedPlayer.lastName} appeared in {selectedPlayer.appearances}{" "}
-            games last season with a batting average of{" "}
-            {selectedPlayer.statistic}
-          </Text>
-        </View>
+        <Pressable onPress={showDefinition}>
+          <View style={styles.infoContainer}>
+            <Text style={styles.info}>
+              {selectedPlayer.lastName} appeared in {selectedPlayer.appearances}{" "}
+              games last season with a <Text style={styles.baText}>BA</Text> of{" "}
+              {selectedPlayer.statistic}
+            </Text>
+          </View>
+        </Pressable>
       </View>
     </View>
   );
@@ -121,5 +131,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: "type",
     textAlign: "center",
+  },
+  baText: {
+    fontSize: 20,
+    fontFamily: "type",
+    textDecorationLine: "underline",
   },
 });

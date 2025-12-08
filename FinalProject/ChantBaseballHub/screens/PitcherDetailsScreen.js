@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Alert, Pressable } from "react-native";
 import { PLAYERS } from "../data/player_data";
 import { useContext, useLayoutEffect, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
@@ -21,6 +21,14 @@ export default function PitcherDetailScreen(props) {
     } else {
       favoritePlayersCtx.addFavorite(playerId);
     }
+  }
+
+  function showDefinition() {
+    Alert.alert(
+      "ERA = Earned Run Average",
+      "Earned Run Average is a calculation that represents the average number of earned runs a pitcher would allow in a nine inning game.",
+      [{ text: "OK" }]
+    );
   }
 
   useLayoutEffect(() => {
@@ -50,22 +58,26 @@ export default function PitcherDetailScreen(props) {
 
       <View style={styles.textContainer}>
         <Text style={styles.headline}>
-          {selectedPlayer.firstName} {selectedPlayer.lastName} #{selectedPlayer.id}
+          {selectedPlayer.firstName} {selectedPlayer.lastName} #
+          {selectedPlayer.id}
         </Text>
         <Text style={styles.importantInfo}>
-          {selectedPlayer.year} - {selectedPlayer.position} 
+          {selectedPlayer.year} - {selectedPlayer.position}
         </Text>
         <Text style={styles.info}>
           <FontAwesome name="music" color={"black"} size={18} />
           <Text style={styles.songInfo}> {selectedPlayer.walkUpSongName}</Text>
         </Text>
-        <View style={styles.infoContainer}>
-          <Text style={styles.info}>
-            {selectedPlayer.lastName} had {selectedPlayer.appearances}{" "}
-            pitching appearances last season with an ERA of{" "}
-            {selectedPlayer.statistic}
-          </Text>
-        </View>
+        <Pressable onPress={showDefinition}>
+          <View style={styles.infoContainer}>
+            <Text style={styles.info}>
+              {selectedPlayer.lastName} had {selectedPlayer.appearances}{" "}
+              pitching appearances last season with an{" "}
+              <Text style={styles.eraText}>ERA</Text> of{" "}
+              {selectedPlayer.statistic}
+            </Text>
+          </View>
+        </Pressable>
       </View>
     </View>
   );
@@ -92,11 +104,10 @@ const styles = StyleSheet.create({
     height: 150,
   },
   textContainer: {
-    borderRadius: 7,
     backgroundColor: Colors.primary500,
     flex: 1,
     alignItems: "center",
-    padding:5,
+    padding: 5,
   },
   headline: {
     color: Colors.primary300,
@@ -113,13 +124,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: "typeBold",
   },
-  infoContainer:{
-    width:'80%',
-    padding:10,
+  infoContainer: {
+    width: "80%",
+    padding: 10,
   },
   info: {
     fontSize: 20,
     fontFamily: "type",
-    textAlign:"center"
+    textAlign: "center",
+  },
+  eraText: {
+    fontSize: 20,
+    fontFamily: "type",
+    textDecorationLine: "underline",
   },
 });
